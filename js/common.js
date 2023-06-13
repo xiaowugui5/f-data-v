@@ -11,6 +11,8 @@ axios.defaults.baseURL = 'http://ajax-api.itheima.net';
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么
+    //设置请求头,并且携带token通行证
+    config.headers.Authorization=localStorage.getItem("token")
     return config;
   }, function (error) {
     // 对请求错误做些什么
@@ -23,5 +25,10 @@ axios.interceptors.response.use(function (response) {
     return response.data;
   }, function (error) {
     // 对响应错误做点什么
+  // console.dir(error);
+    // if(error.response.status===401){
+    //   localStorage.clear()
+    //   location.href="./login.html"
+    // }
     return Promise.reject(error);
   });

@@ -145,6 +145,7 @@
                  msg.innerHTML=res.message
                  //6, 登录成功后,要拿到通行证,存储到本地.以免出现不登录就跳到主页的情况
                  localStorage.setItem("token",res.data.token)
+                 localStorage.setItem("username",res.data.username)
                  //7.成功后就进行跳转
                  setTimeout(function(){
                   location.href="./index.html"
